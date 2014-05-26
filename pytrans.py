@@ -3,6 +3,8 @@ from tkinter import *
 import os
 import sys
 import getopt
+import requests
+import re
 tk = Tk()
 tk.title("pytrans")
 tk.overrideredirect(True)
@@ -24,8 +26,9 @@ def help():
 	-h\tPrint help.""")
 	close()
 def translate(arg):
-	l = os.popen("xsel -o wget -U 'Mozilla/5.0' -qO - 'http://translate.google.com/translate_a/t?client=t&text=xsel -o | sed 's/[\"'<>]//g'&sl=auto&tl=ru' | sed 's/\[\[\[\"//' | cut -d \" -f 1").read()
-	print (l)
+	transtext = os.popen("xsel -o | sed 's/\"[<>]//g; s/\\./,/g'").read()
+	enc = re.search('[йцукенгшщзхъфывапролджэячсмитьбюё]',transtext) and 'en' or 'ru' 
+	os.system("notify-send 'google''"+requests.request("GET", "http://translate.google.com/translate_a/t?client=t&text="+transtext+"&sl=auto&tl="+enc, headers={'User-Agent': 'Mozilla/5.0'}).transtext.split("\"")[1]+ "")
 	close()
 def main(argv):
 	try:
@@ -41,8 +44,8 @@ def main(argv):
 			translate(arg)
 #code
 main(sys.argv[1:])
-Label(tk, text="pytrans v.1.0", bg="#0088cc", fg="#e5e5e5").pack(fill=BOTH) 
-Button(tk, text="close",    command=close, bg="#ff0000", fg="#e5e5e5").place(x = 430, y = 0, height = 17)
+Label(tk, text="pytrans v.1.0", bg="#0088cc", fg="#e5e5e5", font=("Terminus", 8)).pack(fill=BOTH) 
+Button(tk, text="close",    command=close, bg="#ff0000", fg="#e5e5e5", font=("Terminus", 8)).place(x = 450, y = 0, height = 14)
 #end
 tk.mainloop()
 
