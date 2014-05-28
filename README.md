@@ -1,19 +1,19 @@
 # README #
 
-Translate selected text
+Translate selected text easy
 
 ## Use ##
 
 ```
-make dir pytrans
-$ mkdir /path/pytrans
-$ cd /path/pytrans
+make dir easytrans
+$ mkdir /path/easytrans
+$ cd /path/easytrans
 
 clone Appmenu
-$ git clone https://bitbucket.org/remasik/pytrans.git
+$ git clone https://bitbucket.org/remasik/easytrans.git
 
 rights
-# chmod +x pytrans.py
-$ ./pytrans.py -t
+# chmod +x easytrans.py
+$ ./easytrans.py -t
 ```
-> You can assign a hotkey for start an pytrans
+> You can assign a hotkey for start an easytrans
