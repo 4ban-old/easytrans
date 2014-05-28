@@ -4,7 +4,7 @@ import os
 import sys
 import getopt
 import re
-#import requests
+import requests
 tk = Tk()
 tk.title("pytrans")
 tk.overrideredirect(True)
@@ -27,9 +27,9 @@ def help():
 	close()
 def translate():
 	transtext = os.popen("xsel -o | sed 's/\"[<>]//g; s/\\./,/g'").read()
-	Label(tk, text=transtext, bg="#000000",fg="#e5e5e5", font=("Terminus", 8)).place(x=0, y=15)
-	#enc = re.search('[йцукенгшщзхъфывапролджэячсмитьбюё]',transtext) and 'en' or 'ru' 
-	#os.system("notify-send 'google''"+requests.request("GET", "http://translate.google.com/translate_a/t?client=t&text="+transtext+"&sl=auto&tl="+enc, headers={'User-Agent': 'Mozilla/5.0'}).transtext.split("\"")[1]+ "")
+	enc = re.search('[йцукенгшщзхъфывапролджэячсмитьбюё]',transtext) and 'en' or 'ru' 
+	translation = requests.request("GET", "http://translate.google.com/translate_a/t?client=t&text="+transtext+"&sl=auto&tl="+enc, headers={'User-Agent': 'Mozilla/5.0'}).text.split("\"")[1]
+	Label(tk, text=transtext+"\n ----------------------------------------------------------------------------------\n"+translation, bg="#0000ff",fg="#e5e5e5", font=("Terminus", 8)).place(x=0, y=15)
 	#close()
 def main(argv):
 	try:
@@ -45,6 +45,7 @@ def main(argv):
 			translate()
 #code
 main(sys.argv[1:])
+translate()
 Label(tk, text="pytrans v.1.0", bg="#0088cc", fg="#e5e5e5", font=("Terminus", 8)).place(x=0, y=0, width=450) 
 Button(tk, text="close",    command=close, bg="#ff0000", fg="#e5e5e5", font=("Terminus", 8)).place(x = 450, y = 0, height = 14)
 #end
