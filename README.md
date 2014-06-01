@@ -15,6 +15,7 @@ $ git clone https://bitbucket.org/remasik/easytrans.git
 rights
 # chmod +x easytrans.py
 $ ./easytrans.py -t
+Use: select text and run easytrans
 ```
 > You can assign a hotkey for start an easytrans
 
