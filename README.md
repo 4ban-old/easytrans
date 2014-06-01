@@ -17,3 +17,7 @@ rights
 $ ./easytrans.py -t
 ```
 > You can assign a hotkey for start an easytrans
+
+![No image](https://bytebucket.org/remasik/screen.png)
+
+> dependencies `tk` `getopt` `re` `requests` `xsel`
