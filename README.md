@@ -18,6 +18,6 @@ $ ./easytrans.py -t
 ```
 > You can assign a hotkey for start an easytrans
 
-![No image](https://bytebucket.org/remasik/screen.png)
+![No image](https://bytebucket.org/remasik/easytrans/raw/2b87fd85641fbd0d01ad6174035ee79631f98b80/screen.jpg)
 
 > dependencies `tk` `getopt` `re` `requests` `xsel`
