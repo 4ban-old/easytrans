@@ -1,6 +1,9 @@
 # README #
 
 Translate selected text easy
+## Dependencies ##
+
+`tk` `getopt` `re` `requests` `xsel`
 
 ## Use ##
 
@@ -19,6 +22,4 @@ $ ./easytrans.py
 ```
 > You can assign a hotkey for start an easytrans
 
-> dependencies `tk` `getopt` `re` `requests` `xsel`
 ![No image](https://bytebucket.org/remasik/easytrans/raw/2b87fd85641fbd0d01ad6174035ee79631f98b80/screen.jpg)
-
