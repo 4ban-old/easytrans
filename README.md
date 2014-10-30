@@ -31,6 +31,6 @@ fgcolor=#e4e4e4
 textfont=Terminus
 textsize=8
 ```
-![No image]()
+![No image](https://bytebucket.org/remasik/easytrans/raw/05edb1958f763d40d82a93d448df9e6c86075bf5/screen/screen.png)
 
 >  font and size may differ from that in the screenshot
