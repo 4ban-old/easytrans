@@ -1,9 +1,9 @@
-# README #
+## DESCRIPTION ##
+easytrans is a small program to translate the selected text on Russian lang. Written by python with tkinter. Use a google and yandex api for translation.
 
-Translate selected text easy
 ## Dependencies ##
 
-`tk` `getopt` `re` `requests` `xsel`
+`tk` `getopt` `re` `requests` `xsel` `python-requests` `python-urllib` `python-gobject`
 
 ## Use ##
 
@@ -12,16 +12,25 @@ make dir easytrans
 $ mkdir /path/easytrans
 $ cd /path/easytrans
 
-clone Appmenu
-$ git clone https://bitbucket.org/remasik/easytrans.git
+clone easytrans
+$ git clone https://bitbucket.org:remasik/easytrans.git
 
 rights
 # chmod +x easytrans.py
-use: select text and run easytrans
 $ ./easytrans.py
 ```
-> You can assign a hotkey for start an easytrans
+> You can assign a hotkey for start an tkmenu
+```
+For change settings and applications you must edit easytrans.conf, which is located in programm folder
 
-![No image](https://bytebucket.org/remasik/easytrans/raw/2b87fd85641fbd0d01ad6174035ee79631f98b80/screen.jpg)
+[appearance]
+panelbgcolor=#e4e4e4
+panelfgcolor=#343434
+bgcolor=#232323
+fgcolor=#e4e4e4
+textfont=Terminus
+textsize=8
+```
+![No image]()
 
 >  font and size may differ from that in the screenshot
