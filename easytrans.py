@@ -9,16 +9,32 @@ from urllib.parse import quote
 from multiprocessing import Process, Queue
 
 class Easytrans:
-    def __init__(self, config):
-        self.config = config
+    def __init__(self):
+        self.root = Tk()
+        self.root.title("easytrans v.1.0")
+        self.config = self.read_config()
+        if self.config['overridedirect']:
+            self.root.overrideredirect(True)
+        self.root.tkraise()
+        self.root.grab_set
+        # notification mode: True-windows, False - notify daemon
+        mode = True
+        if not self.config['win_mode']:
+            mode = self.config['win_mode']
+
+        #x = (root.winfo_screenwidth() - root.winfo_reqwidth()) / 2
+        #y = (root.winfo_screenheight() - root.winfo_reqheight()) / 2
+        #root.wm_geometry("+%d+%d" % (x, y))
+        #root.minsize(500,500)
+        #root.geometry('+500+200')
         que = Queue()
-        clip = get_clip()
-        enc = detect_lang(clip)
-        if len(clip) < 1: _exit()
+        clip = self.get_clip()
+        enc = self.detect_lang(clip)
+        if len(clip) < 1: self._exit()
         if self.config['yandexapikey'] != '':
-            ya = Process(target=yandex_translate, args=(que, clip, enc,))
+            ya = Process(target=self.yandex_translate, args=(que, clip, enc,))
             ya.start()
-        goo = Process(target=google_translate, args=(que, clip, enc,))
+        goo = Process(target=self.google_translate, args=(que, clip, enc,))
         goo.start()
 
         trans = que.get()
@@ -26,15 +42,33 @@ class Easytrans:
             ya.terminate()
         goo.terminate()
 
-        Label(root, text="easytrans", font=("textfont", self.config['textsize']), bg=panelbackgroundcolor, fg=panelforegroundcolor).pack(fill='both')
-        Button(root, text="[x]", command=close, font=("textfont", textsize), bg=panelbackgroundcolor, fg=panelforegroundcolor).place(height = 14, width = 25, x=478)
-        translate=Message(tk, text=trans,anchor="nw",padx=10, width="490", font=("textfont", textsize), bg=backgroundcolor, fg=foregroundcolor).pack(side=LEFT, fill=BOTH)
+        Label(self.root,
+              text="easytrans",
+              font=(self.config['textfont'], self.config['textsize']),
+              bg=self.config['panelbackgroundcolor'],
+              fg=self.config['panelforegroundcolor']).pack(fill='both')
+        Button(self.root,
+               text="[x]",
+               command=self._exit,
+               font=(self.config['textfont'], self.config['textsize']),
+               bg=self.config['panelbackgroundcolor'],
+               fg=self.config['panelforegroundcolor']).place(height = 14, width = 25, x=478)
+
+        translate=Message(self.root,
+                          text=trans,
+                          anchor="nw",
+                          padx=10,
+                          width="490",
+                          font=(self.config['textfont'], self.config['textsize']),
+                          bg=self.config['panelbackgroundcolor'],
+                          fg=self.config['panelforegroundcolor']).pack(side=LEFT, fill=BOTH)
         Scrollbar(translate).pack(side=RIGHT, fill=Y)
+        self.root.mainloop()
 
     def _exit(self):
-        root.destroy()
+        self.root.destroy()
         sys.exit()
-        root.quit()
+        self.root.quit()
         os._exit(0)
 
     def _help(self):
@@ -109,22 +143,4 @@ class Easytrans:
             q.put("yandex "+ resp.json()['message'])
 
 if __name__ == "__main__":
-    root = Tk()
-    root.title("easytrans v.1.0")
-    config = Easytrans.read_config()
-    if config['overridedirect']:
-        root.overrideredirect(True)
-    root.tkraise()
-    root.grab_set
-    # notification mode: True-windows, False - notify daemon
-    mode = True
-    if not config['win_mode']:
-        mode = config['win_mode']
-
-    #x = (root.winfo_screenwidth() - root.winfo_reqwidth()) / 2
-    #y = (root.winfo_screenheight() - root.winfo_reqheight()) / 2
-    #root.wm_geometry("+%d+%d" % (x, y))
-    #root.minsize(500,500)
-    #root.geometry('+500+200')
-    Easytrans(config)
-    root.mainloop()
+    Easytrans()
