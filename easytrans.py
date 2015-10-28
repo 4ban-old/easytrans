@@ -27,6 +27,25 @@ class Easytrans:
         #root.wm_geometry("+%d+%d" % (x, y))
         #root.minsize(500,500)
         #root.geometry('+500+200')
+
+        #################################################################3
+        #from Tkinter import *
+        #root=Tk()
+        #root.geometry('300x300')
+        #def getXY(event):
+        #    print 'started'               #проверка срабатывания
+        #
+        #    getx=event.x_root        #координата x сохраняется в переменной getx
+        #    gety=event.y_root        #y  соответственно в gety
+        #                            #ВНИМАНИЕ координаты отсчитываются относительно ЭКРАНА.
+        #                            #Если требуется отсчет относительно ОКНА, нужно использовать getx=event.x
+        #                            #для y соответственно
+         #
+        #    print('x',getx)               #контроль
+        #    print('y',gety)
+        #root.bind('<Motion>', getXY)
+        #root.mainloop()
+        ######################################################################
         que = Queue()
         clip = self.get_clip()
         enc = self.detect_lang(clip)
