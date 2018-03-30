@@ -1,7 +1,7 @@
 ## DESCRIPTION ##
 easytrans is a small program to translate the selected text on Russian lang. Written by python with tkinter. Use a google and yandex api for translation. 
 
-Training project for studying tkinter, urllib, multiprocessing and api work.
+Training project for studying tkinter, urllib, multiprocessing and api work. Transfered from bitbucket in OCT 2014.
 
 ## Dependencies ##
 
