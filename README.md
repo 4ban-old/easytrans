@@ -1,5 +1,7 @@
 ## DESCRIPTION ##
-easytrans is a small program to translate the selected text on Russian lang. Written by python with tkinter. Use a google and yandex api for translation.
+easytrans is a small program to translate the selected text on Russian lang. Written by python with tkinter. Use a google and yandex api for translation. 
+
+Training project for studying tkinter, urllib, multiprocessing and api work.
 
 ## Dependencies ##
 
@@ -31,6 +33,6 @@ fgcolor=#e4e4e4
 textfont=Terminus
 textsize=8
 ```
-![No image](https://bytebucket.org/remasik/easytrans/raw/05edb1958f763d40d82a93d448df9e6c86075bf5/screen/screen.png)
+![No image](https://raw.githubusercontent.com/4ban/easytrans/master/screenshot/screen.png?token=ACKiqAEv4phOeTf03ntpLiXmDNaie5aeks5axryUwA%3D%3D)
 
 >  font and size may differ from that in the screenshot
